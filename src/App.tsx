@@ -175,20 +175,9 @@ function App() {
               <div className="flex-shrink-0">
                 <div className="flex items-center">
                   <img
-                    src="https://images.unsplash.com/photo-1710950687020-9c2a9e5a8d0a?q=80&w=150&auto=format&fit=crop"
+                    src="data:image/png;base64,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"
                     alt="MotoLeads Logo"
-                    className="h-10"
-                    onError={(e) => {
-                      // Fallback to text if image fails to load
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        const textElement = document.createElement('span');
-                        textElement.className = 'text-xl font-bold text-white';
-                        textElement.textContent = 'MotoLeads';
-                        parent.appendChild(textElement);
-                      }
-                    }}
+                    className="h-10 md:h-12"
                   />
                 </div>
               </div>
@@ -217,19 +206,30 @@ function App() {
             </div>
             {/* Mobile Menu Button */}
             <div className="-mr-2 flex md:hidden">
-              <button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none">
+              <button 
+                onClick={() => {
+                  const mobileMenu = document.getElementById('mobile-menu');
+                  if (mobileMenu) {
+                    mobileMenu.classList.toggle('hidden');
+                  }
+                }}
+                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none"
+              >
                 <Menu className="h-6 w-6" />
               </button>
-
-              {/* Mobile Navigation (added) */}
-              <div className="md:hidden bg-white bg-opacity-90 absolute top-16 right-0 w-64 z-50">
-                <a href="#services-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Services</a>
-                <a href="#roi-calculator" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">ROI Calculator</a>
-                <a href="#pricing-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pricing</a>
-                <a href="#testimonials-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
-                <a href="#faq-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQ</a>
-              </div>
             </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Dropdown Menu */}
+        <div id="mobile-menu" className="hidden md:hidden bg-blue-900 bg-opacity-95 backdrop-blur-sm w-full">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#services-section" className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 rounded-md">Our Services</a>
+            <a href="#roi-calculator" className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 rounded-md">ROI Calculator</a>
+            <a href="#pricing-section" className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 rounded-md">Pricing</a>
+            <a href="#testimonials-section" className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 rounded-md">Testimonials</a>
+            <a href="#faq-section" className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 rounded-md">FAQ</a>
           </div>
         </div>
       </nav>
@@ -834,9 +834,9 @@ function App() {
           {/* Testimonials Section */}
           <div id="testimonials-section" className="mt-24">
             <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">What Our Clients Say</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">What Dealerships Say</h2>
               <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
-                Hear from dealerships that have transformed their business with our AI solutions
+                Hear from dealerships that have transformed their business with AI solutions
               </p>
             </div>
 
