@@ -364,6 +364,57 @@ function App() {
                   </div>
                   <h3 className="text-xl font-bold text-white">Inbound Service</h3>
                 </div>
+                
+                <div className="mb-4 relative bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white border-opacity-20">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="text-white text-opacity-80 text-xs">Live Chatbot</div>
+                  </div>
+
+                  <div className="h-36 overflow-y-auto pr-2 space-y-2">
+                    <div className="flex items-start space-x-2">
+                      <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
+                        <Bot className="h-3 w-3 text-white" />
+                      </div>
+                      <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-1.5 px-2 text-white max-w-xs">
+                        <p className="text-xs">Hi there! How can I help you today?</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-2 justify-end">
+                      <div className="bg-blue-500 bg-opacity-50 rounded-lg rounded-tr-none py-1.5 px-2 text-white max-w-xs">
+                        <p className="text-xs">Do you have any Ford F-150s in stock?</p>
+                      </div>
+                      <div className="bg-indigo-600 p-1.5 rounded-full flex-shrink-0">
+                        <MessageSquare className="h-3 w-3 text-white" />
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
+                        <Bot className="h-3 w-3 text-white" />
+                      </div>
+                      <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-1.5 px-2 text-white max-w-xs">
+                        <p className="text-xs">Yes! We have several F-150s available. Would you like to see our current inventory?</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-2 relative">
+                    <input 
+                      type="text" 
+                      placeholder="Type here..." 
+                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-full py-1 px-3 text-xs text-white placeholder-white placeholder-opacity-50 focus:outline-none"
+                    />
+                    <button className="absolute right-1 top-1 bg-blue-600 p-1 rounded-full">
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
                 <div className="space-y-4">
                   <div className="flex items-start">
@@ -428,6 +479,22 @@ function App() {
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Outbound Service</h3>
+                </div>
+                
+                <div className="mb-4 relative bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white border-opacity-20">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="text-white text-opacity-80 text-xs">AI Calling Demo</div>
+                  </div>
+                  <div className="aspect-video rounded-md overflow-hidden">
+                    <iframe 
+                      src="https://player.vimeo.com/video/876543210?autoplay=0&loop=0&title=0&byline=0&portrait=0" 
+                      className="w-full h-full" 
+                      frameBorder="0" 
+                      allow="autoplay; fullscreen; picture-in-picture" 
+                      allowFullScreen
+                      title="AI Calling Demo">
+                    </iframe>
+                  </div>
                 </div>
 
                 <div className="space-y-4">
