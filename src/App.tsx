@@ -359,6 +359,9 @@ function App() {
                   <div className="bg-blue-500 bg-opacity-30 p-3 rounded-full mr-4">
                     <MessageCircle className="h-6 w-6 text-white" />
                   </div>
+                  <div className="bg-blue-500 bg-opacity-30 p-3 rounded-full mr-4">
+                    <Phone className="h-6 w-6 text-white" />
+                  </div>
                   <h3 className="text-xl font-bold text-white">Inbound Service</h3>
                 </div>
                 
