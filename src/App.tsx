@@ -5,16 +5,16 @@ function App() {
   const [chatIndex, setChatIndex] = useState(0);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [openFaqs, setOpenFaqs] = useState<number[]>([]);
-  
+
   // ROI Calculator state - separate values for each service
   const [inboundInquiries, setInboundInquiries] = useState<number | string>('');
   const [inboundClosingRate, setInboundClosingRate] = useState<number | string>('');
   const [inboundDollarsPerDeal, setInboundDollarsPerDeal] = useState<number | string>('');
-  
+
   const [outboundLeadsReached, setOutboundLeadsReached] = useState<number | string>('');
   const [outboundClosingRate, setOutboundClosingRate] = useState<number | string>('');
   const [outboundDollarsPerDeal, setOutboundDollarsPerDeal] = useState<number | string>('');
-  
+
   // Define the chat sequence (AI handles booking)
   const chatSequence = [
     { type: 'customer', message: "Hi, I'm interested in a Tesla Model 3 2019. Do you have any in stock?" },
@@ -93,7 +93,7 @@ function App() {
   // Cycle through messages in the sequence
   useEffect(() => {
     const maxIndex = chatSequence.length - 1;
-    
+
     const timer = setTimeout(() => {
       if (chatIndex < maxIndex) {
         // Continue showing messages in current sequence
@@ -105,7 +105,7 @@ function App() {
         }, 4000); // 4 second delay before restarting
       }
     }, 2000); // Change message every 2 seconds
-    
+
     return () => clearTimeout(timer);
   }, [chatIndex]);
 
@@ -118,44 +118,44 @@ function App() {
 
   // Get current messages to display
   const currentMessages = chatSequence.slice(0, chatIndex + 1);
-  
+
   // Calculate ROI for both services simultaneously
   // Inbound calculations
   const inboundCurrentCaptureRate = 0.4; // 40%
   const inboundImprovedCaptureRate = 0.9; // 90%
-  
+
   const inboundInquiriesNum = typeof inboundInquiries === 'string' ? (inboundInquiries === '' ? 0 : parseInt(inboundInquiries)) : inboundInquiries;
   const inboundClosingRateNum = typeof inboundClosingRate === 'string' ? (inboundClosingRate === '' ? 0 : parseInt(inboundClosingRate)) : inboundClosingRate;
   const inboundDollarsPerDealNum = typeof inboundDollarsPerDeal === 'string' ? (inboundDollarsPerDeal === '' ? 0 : parseInt(inboundDollarsPerDeal)) : inboundDollarsPerDeal;
-  
+
   const inboundCurrentCaptured = Math.round(inboundInquiriesNum * inboundCurrentCaptureRate);
   const inboundImprovedCaptured = Math.round(inboundInquiriesNum * inboundImprovedCaptureRate);
-  
+
   const inboundCurrentSales = Math.round(inboundCurrentCaptured * (inboundClosingRateNum / 100));
   const inboundImprovedSales = Math.round(inboundImprovedCaptured * (inboundClosingRateNum / 100));
-  
+
   const inboundCurrentRevenue = inboundCurrentSales * inboundDollarsPerDealNum;
   const inboundImprovedRevenue = inboundImprovedSales * inboundDollarsPerDealNum;
   const inboundAdditionalRevenue = inboundImprovedRevenue - inboundCurrentRevenue;
-  
+
   // Outbound calculations
   const outboundCurrentReachRate = 1.0; // 100% baseline
   const outboundImprovedReachRate = 1.6; // 60% more with improved technology
-  
+
   const outboundLeadsReachedNum = typeof outboundLeadsReached === 'string' ? (outboundLeadsReached === '' ? 0 : parseInt(outboundLeadsReached)) : outboundLeadsReached;
   const outboundClosingRateNum = typeof outboundClosingRate === 'string' ? (outboundClosingRate === '' ? 0 : parseInt(outboundClosingRate)) : outboundClosingRate;
   const outboundDollarsPerDealNum = typeof outboundDollarsPerDeal === 'string' ? (outboundDollarsPerDeal === '' ? 0 : parseInt(outboundDollarsPerDeal)) : outboundDollarsPerDeal;
-  
+
   const outboundCurrentCaptured = Math.round(outboundLeadsReachedNum * outboundCurrentReachRate);
   const outboundImprovedCaptured = Math.round(outboundLeadsReachedNum * outboundImprovedReachRate);
-  
+
   const outboundCurrentSales = Math.round(outboundCurrentCaptured * (outboundClosingRateNum / 100));
   const outboundImprovedSales = Math.round(outboundImprovedCaptured * (outboundClosingRateNum / 100));
-  
+
   const outboundCurrentRevenue = outboundCurrentSales * outboundDollarsPerDealNum;
   const outboundImprovedRevenue = outboundImprovedSales * outboundDollarsPerDealNum;
   const outboundAdditionalRevenue = outboundImprovedRevenue - outboundCurrentRevenue;
-  
+
   // Total additional revenue from both services
   const totalAdditionalRevenue = inboundAdditionalRevenue + outboundAdditionalRevenue;
 
@@ -223,7 +223,7 @@ function App() {
         <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-40 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -236,7 +236,7 @@ function App() {
                   MotoLeads combines advanced AI chatbots and human-like calling agents to transform how your dealership connects with car buyers.
                 </p>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
                   href="https://calendly.com/amin-usman-motoleads/30min" 
@@ -247,7 +247,7 @@ function App() {
                   Request a Demo <Zap className="ml-2 h-5 w-5" />
                 </a>
               </div>
-              
+
               <div className="flex items-center space-x-4">
                 <div className="flex -space-x-2">
                   <img className="w-10 h-10 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User" />
@@ -257,7 +257,7 @@ function App() {
                 <p className="text-sm text-white"><span className="font-bold">500+</span> dealerships trust MotoLeads</p>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-xl opacity-30 transform -rotate-6"></div>
               <div className="relative bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white border-opacity-20">
@@ -269,7 +269,7 @@ function App() {
                   </div>
                   <div className="text-white text-opacity-80 text-sm">MotoLeads AI Assistant</div>
                 </div>
-                
+
                 <div ref={chatContainerRef} className="space-y-2 h-96 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
                   {currentMessages.map((chat, index) => {
                     if (chat.type === 'customer') {
@@ -307,7 +307,7 @@ function App() {
                     }
                     return null;
                   })}
-                  
+
                   {/* Show typing indicator for the next message */}
                   {chatIndex < chatSequence.length - 1 && (
                     <div className="flex items-start space-x-2">
@@ -324,7 +324,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                
+
                 <div className="mt-4 relative">
                   <input 
                     type="text" 
@@ -340,7 +340,7 @@ function App() {
               </div>
             </div>
           </div>
-          
+
           {/* Benefits Section */}
           <div className="mt-24">
             <div className="text-center mb-10">
@@ -349,12 +349,12 @@ function App() {
                 Discover how our AI-powered solutions can transform your dealership's customer engagement
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Inbound Service Benefits */}
               <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-6 shadow-xl border border-blue-500 border-opacity-30 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-                
+
                 <div className="flex items-center mb-4">
                   <div className="bg-blue-500 bg-opacity-30 p-3 rounded-full mr-4">
                     <MessageCircle className="h-6 w-6 text-white" />
@@ -364,7 +364,7 @@ function App() {
                   </div>
                   <h3 className="text-xl font-bold text-white">Inbound Service</h3>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
@@ -374,16 +374,16 @@ function App() {
                       <h4 className="text-white font-semibold">24/7 AI Chatbot</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-blue-300" />
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-white font-semibold">Human-Like Calling Agent</h4>
+                      <h4 className="text-white font-semibold">Human like call receiving agent</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-blue-300" />
@@ -392,7 +392,7 @@ function App() {
                       <h4 className="text-white font-semibold">Appointment Scheduling</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-blue-300" />
@@ -401,7 +401,7 @@ function App() {
                       <h4 className="text-white font-semibold">Instant Response</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-blue-300" />
@@ -411,7 +411,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 flex justify-between items-center">
                   <div className="bg-blue-700 bg-opacity-50 rounded-lg px-3 py-1.5">
                     <p className="text-sm text-white font-medium">125% more leads captured</p>
@@ -426,18 +426,18 @@ function App() {
                   </a>
                 </div>
               </div>
-              
+
               {/* Outbound Service Benefits */}
               <div className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-2xl p-6 shadow-xl border border-purple-500 border-opacity-30 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-                
+
                 <div className="flex items-center mb-4">
                   <div className="bg-purple-500 bg-opacity-30 p-3 rounded-full mr-4">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white">Outbound Service</h3>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
@@ -447,7 +447,7 @@ function App() {
                       <h4 className="text-white font-semibold">Proactive Outreach</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-purple-300" />
@@ -456,7 +456,7 @@ function App() {
                       <h4 className="text-white font-semibold">Natural Conversations</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-purple-300" />
@@ -465,7 +465,7 @@ function App() {
                       <h4 className="text-white font-semibold">Lead Qualification</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-purple-300" />
@@ -474,7 +474,7 @@ function App() {
                       <h4 className="text-white font-semibold">Follow-up Campaigns</h4>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mt-1">
                       <CheckCircle className="h-5 w-5 text-purple-300" />
@@ -484,7 +484,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 flex justify-between items-center">
                   <div className="bg-purple-700 bg-opacity-50 rounded-lg px-3 py-1.5">
                     <p className="text-sm text-white font-medium">60% more leads reached</p>
@@ -501,7 +501,7 @@ function App() {
               </div>
             </div>
           </div>
-          
+
           {/* ROI Calculator Section - Side by side services */}
           <div className="mt-24">
             <div className="text-center mb-6">
@@ -510,7 +510,7 @@ function App() {
                 See how our AI solutions can boost your dealership's performance
               </p>
             </div>
-            
+
             <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-4 md:p-6 shadow-2xl border border-white border-opacity-20">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
                 {/* Input Section - Side by side services */}
@@ -519,7 +519,7 @@ function App() {
                     <Calculator className="mr-2 h-4 w-4" />
                     ROI Calculator
                   </h3>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Inbound Service */}
                     <div className="bg-blue-600 bg-opacity-20 rounded-lg p-3 border border-blue-500 border-opacity-30">
@@ -550,7 +550,7 @@ function App() {
                                 setInboundClosingRate(value);
                               }
                             }}
-                            className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-1.5 px-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-1.5 px-2 text-smtext-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
                         </div>
                         <div>
@@ -574,7 +574,7 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Outbound Service */}
                     <div className="bg-purple-600 bg-opacity-20 rounded-lg p-3 border border-purple-500 border-opacity-30">
                       <h4 className="text-sm font-semibold text-white mb-2">Outbound Calling Agent</h4>
@@ -630,7 +630,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Results Section - Side by side metrics */}
                 <div className="lg:col-span-5">
                   <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-4 shadow-lg h-full">
@@ -638,7 +638,7 @@ function App() {
                       <BarChart3 className="mr-2 h-4 w-4" />
                       Increase with AI Solutions
                     </h3>
-                    
+
                     <div className="grid grid-cols-2 gap-3">
                       {/* Inbound Service Results */}
                       <div className="bg-white bg-opacity-10 rounded-lg p-3">
@@ -662,7 +662,7 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Outbound Service Results */}
                       <div className="bg-white bg-opacity-10 rounded-lg p-3">
                         <div className="flex justify-between items-center mb-2">
@@ -685,7 +685,7 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Total Monthly Profit Increase - Full width */}
                       <div className="bg-green-500 bg-opacity-20 rounded-lg p-3 border border-green-500 border-opacity-30 mt-1 col-span-2">
                         <div className="flex justify-between items-center">
@@ -702,7 +702,7 @@ function App() {
               </div>
             </div>
           </div>
-          
+
           {/* Testimonials Section */}
           <div id="testimonials-section" className="mt-24">
             <div className="text-center mb-10">
@@ -711,7 +711,7 @@ function App() {
                 Hear from dealerships that have transformed their business with our AI solutions
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 border border-white border-opacity-20">
@@ -739,7 +739,7 @@ function App() {
               ))}
             </div>
           </div>
-          
+
           {/* FAQ Section */}
           <div id="faq-section" className="mt-24">
             <div className="text-center mb-10">
@@ -748,7 +748,7 @@ function App() {
                 Everything you need to know about our AI solutions
               </p>
             </div>
-            
+
             <div className="max-w-3xl mx-auto space-y-4">
               {faqData.map((faq, index) => (
                 <div 
@@ -766,7 +766,7 @@ function App() {
                       <ChevronDown className="h-5 w-5 text-white" />
                     )}
                   </button>
-                  
+
                   {openFaqs.includes(index) && (
                     <div className="px-6 pb-4">
                       <p className="text-white text-opacity-80">{faq.answer}</p>
@@ -776,13 +776,13 @@ function App() {
               ))}
             </div>
           </div>
-          
+
           {/* CTA Section */}
           <div className="mt-24 mb-12">
             <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 md:p-12 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-              
+
               <div className="relative z-10 text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Dealership?</h2>
                 <p className="text-lg text-white text-opacity-90 mb-8">
