@@ -175,20 +175,10 @@ function App() {
               <div className="flex-shrink-0">
                 <div className="flex items-center">
                   <img
-                    src="https://images.unsplash.com/photo-1710950687020-9c2a9e5a8d0a?q=80&w=150&auto=format&fit=crop"
+                    src="/attached_assets/Image 27-02-2025 at 2.23 AM.jpg"
                     alt="MotoLeads Logo"
-                    className="h-10"
-                    onError={(e) => {
-                      // Fallback to text if image fails to load
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        const textElement = document.createElement('span');
-                        textElement.className = 'text-xl font-bold text-white';
-                        textElement.textContent = 'MotoLeads';
-                        parent.appendChild(textElement);
-                      }
-                    }}
+                    className="h-8 md:h-10"
+                    style={{ objectFit: 'contain', background: 'transparent' }}
                   />
                 </div>
               </div>
@@ -834,9 +824,9 @@ function App() {
           {/* Testimonials Section */}
           <div id="testimonials-section" className="mt-24">
             <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">What Our Clients Say</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">What Dealerships Say</h2>
               <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
-                Hear from dealerships that have transformed their business with our AI solutions
+                Hear from dealerships that have transformed their business with AI solutions
               </p>
             </div>
 
