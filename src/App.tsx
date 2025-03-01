@@ -116,6 +116,11 @@ function App() {
     }
   }, [chatIndex]);
 
+  // State for pricing form 
+  const [serviceType, setServiceType] = useState('inbound');
+  const [companyName, setCompanyName] = useState('');
+  const [email, setEmail] = useState('');
+  
   // Get current messages to display
   const currentMessages = chatSequence.slice(0, chatIndex + 1);
 
@@ -190,6 +195,7 @@ function App() {
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a href="#services-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Our Services</a>
                   <a href="#roi-calculator" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">ROI Calculator</a>
+                  <a href="#pricing-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
                   <a href="#testimonials-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
                   <a href="#faq-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
                 </div>
@@ -261,81 +267,16 @@ function App() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-xl opacity-30 transform -rotate-6"></div>
               <div className="relative bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white border-opacity-20">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
-                  <div className="text-white text-opacity-80 text-sm">MotoLeads AI Assistant</div>
-                </div>
-
-                <div ref={chatContainerRef} className="space-y-2 h-96 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-                  {currentMessages.map((chat, index) => {
-                    if (chat.type === 'customer') {
-                      return (
-                        <div key={index} className="flex items-start space-x-2 justify-end">
-                          <div className="bg-blue-500 bg-opacity-50 rounded-lg rounded-tr-none py-2 px-3 text-white max-w-xs">
-                            <p className="text-sm">{chat.message}</p>
-                          </div>
-                          <div className="bg-indigo-600 p-1.5 rounded-full flex-shrink-0">
-                            <MessageSquare className="h-4 w-4 text-white" />
-                          </div>
-                        </div>
-                      );
-                    } else if (chat.type === 'bot') {
-                      return (
-                        <div key={index} className="flex items-start space-x-2">
-                          <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
-                            <Bot className="h-4 w-4 text-white" />
-                          </div>
-                          <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-2 px-3 text-white max-w-xs">
-                            <p className="text-sm">{chat.message}</p>
-                            {chat.image && (
-                              <img 
-                                src={chat.image} 
-                                alt="Tesla Model 3" 
-                                className="mt-2 rounded-lg w-full h-auto object-cover"
-                                onError={(e) => {
-                                  e.currentTarget.style.display = 'none';
-                                }}
-                              />
-                            )}
-                          </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
-
-                  {/* Show typing indicator for the next message */}
-                  {chatIndex < chatSequence.length - 1 && (
-                    <div className="flex items-start space-x-2">
-                      <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
-                        <Bot className="h-4 w-4 text-white" />
-                      </div>
-                      <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-2 px-3 text-white max-w-xs">
-                        <div className="flex space-x-1">
-                          <div className="h-1.5 w-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                          <div className="h-1.5 w-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                          <div className="h-1.5 w-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '600ms' }}></div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-4 relative">
-                  <input 
-                    type="text" 
-                    placeholder="Type your message..." 
-                    className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-full py-2 px-4 text-sm text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                <div className="flex flex-col items-center justify-center h-96">
+                  <img 
+                    src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=600&auto=format&fit=crop" 
+                    alt="Car Dealership" 
+                    className="w-3/4 h-auto rounded-xl mb-6 shadow-lg"
                   />
-                  <button className="absolute right-1.5 top-1.5 bg-blue-600 p-1.5 rounded-full">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                  </button>
+                  <h3 className="text-2xl font-bold text-white mb-2">AI-Powered Communication</h3>
+                  <p className="text-white text-opacity-80 text-center">
+                    Revolutionary tools to help your dealership engage customers and drive sales
+                  </p>
                 </div>
               </div>
             </div>
@@ -368,48 +309,76 @@ function App() {
                 <div className="mb-4 relative bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white border-opacity-20">
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
-                    <div className="text-white text-opacity-80 text-xs">Live Chatbot</div>
+                    <div className="text-white text-opacity-80 text-sm">MotoLeads AI Assistant</div>
                   </div>
 
-                  <div className="h-36 overflow-y-auto pr-2 space-y-2">
-                    <div className="flex items-start space-x-2">
-                      <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
-                        <Bot className="h-3 w-3 text-white" />
+                  <div ref={chatContainerRef} className="space-y-2 h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
+                    {currentMessages.map((chat, index) => {
+                      if (chat.type === 'customer') {
+                        return (
+                          <div key={index} className="flex items-start space-x-2 justify-end">
+                            <div className="bg-blue-500 bg-opacity-50 rounded-lg rounded-tr-none py-2 px-3 text-white max-w-xs">
+                              <p className="text-sm">{chat.message}</p>
+                            </div>
+                            <div className="bg-indigo-600 p-1.5 rounded-full flex-shrink-0">
+                              <MessageSquare className="h-4 w-4 text-white" />
+                            </div>
+                          </div>
+                        );
+                      } else if (chat.type === 'bot') {
+                        return (
+                          <div key={index} className="flex items-start space-x-2">
+                            <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
+                              <Bot className="h-4 w-4 text-white" />
+                            </div>
+                            <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-2 px-3 text-white max-w-xs">
+                              <p className="text-sm">{chat.message}</p>
+                              {chat.image && (
+                                <img 
+                                  src={chat.image} 
+                                  alt="Tesla Model 3" 
+                                  className="mt-2 rounded-lg w-full h-auto object-cover"
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                  }}
+                                />
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
+
+                    {/* Show typing indicator for the next message */}
+                    {chatIndex < chatSequence.length - 1 && (
+                      <div className="flex items-start space-x-2">
+                        <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
+                          <Bot className="h-4 w-4 text-white" />
+                        </div>
+                        <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-2 px-3 text-white max-w-xs">
+                          <div className="flex space-x-1">
+                            <div className="h-1.5 w-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                            <div className="h-1.5 w-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                            <div className="h-1.5 w-1.5 bg-white rounded-full animate-bounce" style={{ animationDelay: '600ms' }}></div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-1.5 px-2 text-white max-w-xs">
-                        <p className="text-xs">Hi there! How can I help you today?</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-2 justify-end">
-                      <div className="bg-blue-500 bg-opacity-50 rounded-lg rounded-tr-none py-1.5 px-2 text-white max-w-xs">
-                        <p className="text-xs">Do you have any Ford F-150s in stock?</p>
-                      </div>
-                      <div className="bg-indigo-600 p-1.5 rounded-full flex-shrink-0">
-                        <MessageSquare className="h-3 w-3 text-white" />
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-2">
-                      <div className="bg-blue-600 p-1.5 rounded-full flex-shrink-0">
-                        <Bot className="h-3 w-3 text-white" />
-                      </div>
-                      <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-1.5 px-2 text-white max-w-xs">
-                        <p className="text-xs">Yes! We have several F-150s available. Would you like to see our current inventory?</p>
-                      </div>
-                    </div>
+                    )}
                   </div>
 
-                  <div className="mt-2 relative">
+                  <div className="mt-4 relative">
                     <input 
                       type="text" 
-                      placeholder="Type here..." 
-                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-full py-1 px-3 text-xs text-white placeholder-white placeholder-opacity-50 focus:outline-none"
+                      placeholder="Type your message..." 
+                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-full py-2 px-4 text-sm text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    <button className="absolute right-1 top-1 bg-blue-600 p-1 rounded-full">
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <button className="absolute right-1.5 top-1.5 bg-blue-600 p-1.5 rounded-full">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                       </svg>
                     </button>
@@ -751,6 +720,106 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Pricing Section */}
+          <div id="pricing-section" className="mt-24">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-white">We Offer Custom Pricing For Every Dealership</h2>
+              <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
+                Get a personalized quote based on your dealership's unique needs
+              </p>
+            </div>
+
+            <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 shadow-2xl border border-white border-opacity-20 max-w-3xl mx-auto">
+              <form id="pricing-form" onSubmit={(e) => {
+                e.preventDefault();
+                
+                // Create data for Google Sheets
+                const data = {
+                  'Service Type': serviceType,
+                  'Company Name': companyName,
+                  'Email': email,
+                  'Date': new Date().toISOString()
+                };
+                
+                // In a real implementation, you would send this data to Google Sheets
+                // This would typically involve using a fetch request to a Google Apps Script Web App
+                console.log("Form submitted with data:", data);
+                
+                // Simple visual feedback
+                alert("Thank you! Your quote request has been submitted. We'll be in touch soon.");
+                
+                // Reset form
+                setServiceType('inbound');
+                setCompanyName('');
+                setEmail('');
+              }}>
+                <div className="space-y-6">
+                  {/* Service Type Selection */}
+                  <div>
+                    <label htmlFor="service-type" className="block text-white font-medium mb-2">Type of Service</label>
+                    <select 
+                      id="service-type" 
+                      value={serviceType}
+                      onChange={(e) => setServiceType(e.target.value)}
+                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="inbound" className="bg-gray-800">Inbound</option>
+                      <option value="outbound" className="bg-gray-800">Outbound</option>
+                      <option value="both" className="bg-gray-800">Inbound + Outbound</option>
+                    </select>
+                  </div>
+                  
+                  {/* Company Name */}
+                  <div>
+                    <label htmlFor="company-name" className="block text-white font-medium mb-2">Company Name</label>
+                    <input 
+                      type="text" 
+                      id="company-name"
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      required
+                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Your dealership name"
+                    />
+                  </div>
+                  
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-white font-medium mb-2">Email</label>
+                    <input 
+                      type="email" 
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="you@yourdealership.com"
+                    />
+                  </div>
+                  
+                  {/* Additional Info - hidden Google Sheet embed */}
+                  <div className="hidden">
+                    <iframe 
+                      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTY0fr_ST2iYdSVwDrk-YB9est-DJEtDkDz6k5ucRIoPVJGvkCACexfs5x9IU4tC17hGdH6SyendUfA/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
+                      width="100%" 
+                      height="300">
+                    </iframe>
+                  </div>
+                  
+                  {/* Submit Button */}
+                  <div className="flex justify-center">
+                    <button 
+                      type="submit" 
+                      className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold rounded-lg hover:from-blue-700 hover:to-indigo-800 transition-all shadow-lg"
+                    >
+                      Get Quote
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
 
