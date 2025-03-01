@@ -188,10 +188,10 @@ function App() {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <a href="#" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Features</a>
-                  <a href="#" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Benefits</a>
-                  <a href="#" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
-                  <a href="#" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                  <a href="#services-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Our Services</a>
+                  <a href="#roi-calculator" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">ROI Calculator</a>
+                  <a href="#testimonials-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
+                  <a href="#faq-section" className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
                 </div>
               </div>
             </div>
@@ -254,7 +254,7 @@ function App() {
                   <img className="w-10 h-10 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="User" />
                   <img className="w-10 h-10 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="User" />
                 </div>
-                <p className="text-sm text-white"><span className="font-bold">500+</span> dealerships trust MotoLeads</p>
+                <p className="text-sm text-white"><span className="font-bold">500+</span> dealerships have seen proven results</p>
               </div>
             </div>
 
@@ -342,7 +342,7 @@ function App() {
           </div>
 
           {/* Benefits Section */}
-          <div className="mt-24">
+          <div id="services-section" className="mt-24">
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-bold text-white">Our Services</h2>
               <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
@@ -412,18 +412,10 @@ function App() {
                   </div>
                 </div>
 
-                <div className="mt-8 flex justify-between items-center">
+                <div className="mt-8 flex justify-center items-center">
                   <div className="bg-blue-700 bg-opacity-50 rounded-lg px-3 py-1.5">
                     <p className="text-sm text-white font-medium">125% more leads captured</p>
                   </div>
-                  <a 
-                    href="https://calendly.com/amin-usman-motoleads/30min" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="bg-white text-blue-700 px-4 py-2 rounded-lg font-medium text-sm hover:bg-opacity-90 transition-colors flex items-center"
-                  >
-                    Learn More <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
                 </div>
               </div>
 
@@ -480,30 +472,22 @@ function App() {
                       <CheckCircle className="h-5 w-5 text-purple-300" />
                     </div>
                     <div className="ml-3">
-                      <h4 className="text-white font-semibold">Performance Analytics</h4>
+                      <h4 className="text-white font-semibold">CRM Integration</h4>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 flex justify-between items-center">
+                <div className="mt-8 flex justify-center items-center">
                   <div className="bg-purple-700 bg-opacity-50 rounded-lg px-3 py-1.5">
                     <p className="text-sm text-white font-medium">60% more leads reached</p>
                   </div>
-                  <a 
-                    href="https://calendly.com/amin-usman-motoleads/30min" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="bg-white text-purple-700 px-4 py-2 rounded-lg font-medium text-sm hover:bg-opacity-90 transition-colors flex items-center"
-                  >
-                    Learn More <ArrowRight className="ml-1 h-4 w-4" />
-                  </a>
                 </div>
               </div>
             </div>
           </div>
 
           {/* ROI Calculator Section - Side by side services */}
-          <div className="mt-24">
+          <div id="roi-calculator" className="mt-24">
             <div className="text-center mb-6">
               <h2 className="text-2xl md:text-3xl font-bold text-white">Calculate Your ROI</h2>
               <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
@@ -786,7 +770,7 @@ function App() {
               <div className="relative z-10 text-center max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Dealership?</h2>
                 <p className="text-lg text-white text-opacity-90 mb-8">
-                  Join 500+ dealerships already using our AI solutions to increase lead capture, improve response times, and drive more sales.
+                  Join 500+ dealerships already using AI solutions to increase lead capture, improve response times, and drive more sales.
                 </p>
                 <a 
                   href="https://calendly.com/amin-usman-motoleads/30min" 
