@@ -217,19 +217,32 @@ function App() {
             </div>
             {/* Mobile Menu Button */}
             <div className="-mr-2 flex md:hidden">
-              <button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none">
+              <button 
+                onClick={() => {
+                  const mobileMenu = document.getElementById('mobile-menu');
+                  if (mobileMenu) {
+                    mobileMenu.classList.toggle('hidden');
+                  }
+                }}
+                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none"
+              >
                 <Menu className="h-6 w-6" />
               </button>
-
-              {/* Mobile Navigation (added) */}
-              <div className="md:hidden bg-white bg-opacity-90 absolute top-16 right-0 w-64 z-50">
-                <a href="#services-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Services</a>
-                <a href="#roi-calculator" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">ROI Calculator</a>
-                <a href="#pricing-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pricing</a>
-                <a href="#testimonials-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
-                <a href="#faq-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQ</a>
-              </div>
             </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation Menu */}
+      <div id="mobile-menu" className="hidden md:hidden bg-blue-900 bg-opacity-95 absolute top-16 right-0 w-full z-50 border-t border-blue-800">
+        <a href="#services-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-800">Our Services</a>
+        <a href="#roi-calculator" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-800">ROI Calculator</a>
+        <a href="#pricing-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-800">Pricing</a>
+        <a href="#testimonials-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-800">Testimonials</a>
+        <a href="#faq-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-800">FAQ</a>
+      </div>
+
+      <div className="relative overflow-hidden">
           </div>
         </div>
       </nav>
@@ -834,9 +847,9 @@ function App() {
           {/* Testimonials Section */}
           <div id="testimonials-section" className="mt-24">
             <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">What Our Clients Say</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">What Dealerships Say</h2>
               <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
-                Hear from dealerships that have transformed their business with our AI solutions
+                Hear from dealerships that have transformed their business with AI solutions
               </p>
             </div>
 
