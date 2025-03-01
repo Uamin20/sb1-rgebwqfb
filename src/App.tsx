@@ -362,9 +362,7 @@ function App() {
                   <h3 className="text-xl font-bold text-white">Inbound Service</h3>
                 </div>
                 
-                <p className="text-white text-opacity-90 mb-6">
-                  Our AI-powered chatbot and human-like calling agents work together to capture and convert more inbound leads.
-                </p>
+                
                 
                 <div className="space-y-4">
                   <div className="flex items-start">
@@ -454,9 +452,7 @@ function App() {
                   <h3 className="text-xl font-bold text-white">Outbound Service</h3>
                 </div>
                 
-                <p className="text-white text-opacity-90 mb-6">
-                  Our AI calling agents proactively reach out to leads, increasing contact rates and driving more sales.
-                </p>
+                
                 
                 <div className="space-y-4">
                   <div className="flex items-start">
