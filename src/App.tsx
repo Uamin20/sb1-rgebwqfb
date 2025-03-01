@@ -83,9 +83,9 @@ function App() {
 
   // Toggle FAQ open/closed
   const toggleFaq = (index: number) => {
-    setOpenFaqs(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index) 
+    setOpenFaqs(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
         : [...prev, index]
     );
   };
@@ -116,11 +116,12 @@ function App() {
     }
   }, [chatIndex]);
 
-  // State for pricing form 
+  // State for pricing form
   const [serviceType, setServiceType] = useState('inbound');
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
-  
+  const [website, setWebsite] = useState(''); // Added website input
+
   // Get current messages to display
   const currentMessages = chatSequence.slice(0, chatIndex + 1);
 
@@ -173,9 +174,9 @@ function App() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="flex items-center">
-                  <img 
-                    src="https://images.unsplash.com/photo-1710950687020-9c2a9e5a8d0a?q=80&w=150&auto=format&fit=crop" 
-                    alt="MotoLeads Logo" 
+                  <img
+                    src="https://images.unsplash.com/photo-1710950687020-9c2a9e5a8d0a?q=80&w=150&auto=format&fit=crop"
+                    alt="MotoLeads Logo"
                     className="h-10"
                     onError={(e) => {
                       // Fallback to text if image fails to load
@@ -203,10 +204,10 @@ function App() {
             </div>
             <div className="hidden md:block">
               <div className="ml-4 flex items-center md:ml-6">
-                <a 
-                  href="https://calendly.com/amin-usman-motoleads/30min" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://calendly.com/amin-usman-motoleads/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center transition-colors"
                 >
                   <PhoneCall className="mr-2 h-4 w-4" />
@@ -214,10 +215,20 @@ function App() {
                 </a>
               </div>
             </div>
+            {/* Mobile Menu Button */}
             <div className="-mr-2 flex md:hidden">
               <button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none">
                 <Menu className="h-6 w-6" />
               </button>
+
+              {/* Mobile Navigation (added) */}
+              <div className="md:hidden bg-white bg-opacity-90 absolute top-16 right-0 w-64 z-50">
+                <a href="#services-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Services</a>
+                <a href="#roi-calculator" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">ROI Calculator</a>
+                <a href="#pricing-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pricing</a>
+                <a href="#testimonials-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
+                <a href="#faq-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQ</a>
+              </div>
             </div>
           </div>
         </div>
@@ -236,18 +247,18 @@ function App() {
               <div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
                   <span className="block">Revolutionize Your</span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Dealership Experience</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse">Dealership Sales</span> {/* Added animate-pulse */}
                 </h1>
                 <p className="mt-6 text-xl text-white text-opacity-90 max-w-lg">
-                  MotoLeads combines advanced AI chatbots and human-like calling agents to transform how your dealership connects with car buyers.
+                  MotoLeads combines advanced AI chatbots and AI calling agents to transform how your dealership converts leads to sales.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="https://calendly.com/amin-usman-motoleads/30min" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://calendly.com/amin-usman-motoleads/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-white bg-opacity-10 backdrop-blur-sm text-white font-medium rounded-lg hover:bg-opacity-20 transition-all flex items-center justify-center"
                 >
                   Request a Demo <Zap className="ml-2 h-5 w-5" />
@@ -264,22 +275,7 @@ function App() {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-xl opacity-30 transform -rotate-6"></div>
-              <div className="relative bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white border-opacity-20">
-                <div className="flex flex-col items-center justify-center h-96">
-                  <img 
-                    src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=600&auto=format&fit=crop" 
-                    alt="Car Dealership" 
-                    className="w-3/4 h-auto rounded-xl mb-6 shadow-lg"
-                  />
-                  <h3 className="text-2xl font-bold text-white mb-2">AI-Powered Communication</h3>
-                  <p className="text-white text-opacity-80 text-center">
-                    Revolutionary tools to help your dealership engage customers and drive sales
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* Removed the box with image and text */}
           </div>
 
           {/* Benefits Section */}
@@ -305,7 +301,7 @@ function App() {
                   </div>
                   <h3 className="text-xl font-bold text-white">Inbound Service</h3>
                 </div>
-                
+
                 <div className="mb-4 relative bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white border-opacity-20">
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center space-x-2">
@@ -338,9 +334,9 @@ function App() {
                             <div className="bg-gray-800 bg-opacity-50 rounded-lg rounded-tl-none py-2 px-3 text-white max-w-xs">
                               <p className="text-sm">{chat.message}</p>
                               {chat.image && (
-                                <img 
-                                  src={chat.image} 
-                                  alt="Tesla Model 3" 
+                                <img
+                                  src={chat.image}
+                                  alt="Tesla Model 3"
                                   className="mt-2 rounded-lg w-full h-auto object-cover"
                                   onError={(e) => {
                                     e.currentTarget.style.display = 'none';
@@ -372,9 +368,9 @@ function App() {
                   </div>
 
                   <div className="mt-4 relative">
-                    <input 
-                      type="text" 
-                      placeholder="Type your message..." 
+                    <input
+                      type="text"
+                      placeholder="Type your message..."
                       className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-full py-2 px-4 text-sm text-white placeholder-white placeholder-opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                     <button className="absolute right-1.5 top-1.5 bg-blue-600 p-1.5 rounded-full">
@@ -449,17 +445,17 @@ function App() {
                   </div>
                   <h3 className="text-xl font-bold text-white">Outbound Service</h3>
                 </div>
-                
+
                 <div className="mb-4 relative bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white border-opacity-20">
                   <div className="flex justify-between items-center mb-2">
                     <div className="text-white text-opacity-80 text-xs">AI Calling Demo</div>
                   </div>
                   <div className="aspect-video rounded-md overflow-hidden">
-                    <iframe 
-                      src="https://player.vimeo.com/video/876543210?autoplay=0&loop=0&title=0&byline=0&portrait=0" 
-                      className="w-full h-full" 
-                      frameBorder="0" 
-                      allow="autoplay; fullscreen; picture-in-picture" 
+                    <iframe
+                      src="https://player.vimeo.com/video/876543210?autoplay=0&loop=0&title=0&byline=0&portrait=0"
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
                       allowFullScreen
                       title="AI Calling Demo">
                     </iframe>
@@ -547,8 +543,8 @@ function App() {
                       <div className="space-y-2">
                         <div>
                           <label className="block text-xs font-medium text-white mb-1">Monthly Inquiries</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             value={inboundInquiries}
                             onChange={(e) => {
                               const value = e.target.value;
@@ -561,8 +557,8 @@ function App() {
                         </div>
                         <div>
                           <label className="block text-xs font-medium text-white mb-1">Closing Rate (%)</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             value={inboundClosingRate}
                             onChange={(e) => {
                               const value = e.target.value;
@@ -579,8 +575,8 @@ function App() {
                             <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
                               <DollarSign className="h-3 w-3 text-white text-opacity-70" />
                             </div>
-                            <input 
-                              type="text" 
+                            <input
+                              type="text"
                               value={inboundDollarsPerDeal}
                               onChange={(e) => {
                                 const value = e.target.value;
@@ -601,8 +597,8 @@ function App() {
                       <div className="space-y-2">
                         <div>
                           <label className="block text-xs font-medium text-white mb-1">Leads Reached</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             value={outboundLeadsReached}
                             onChange={(e) => {
                               const value = e.target.value;
@@ -615,8 +611,8 @@ function App() {
                         </div>
                         <div>
                           <label className="block text-xs font-medium text-white mb-1">Closing Rate (%)</label>
-                          <input 
-                            type="text" 
+                          <input
+                            type="text"
                             value={outboundClosingRate}
                             onChange={(e) => {
                               const value = e.target.value;
@@ -633,8 +629,8 @@ function App() {
                             <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
                               <DollarSign className="h-3 w-3 text-white text-opacity-70" />
                             </div>
-                            <input 
-                              type="text" 
+                            <input
+                              type="text"
                               value={outboundDollarsPerDeal}
                               onChange={(e) => {
                                 const value = e.target.value;
@@ -726,42 +722,41 @@ function App() {
           {/* Pricing Section */}
           <div id="pricing-section" className="mt-24">
             <div className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">We Offer Custom Pricing For Every Dealership</h2>
-              <p className="mt-2 text-base text-white text-opacity-80 max-w-2xl mx-auto">
-                Get a personalized quote based on your dealership's unique needs
-              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">We Offer Custom Pricing For Every Dealership After Discovery Call</h2>
             </div>
 
             <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 shadow-2xl border border-white border-opacity-20 max-w-3xl mx-auto">
               <form id="pricing-form" onSubmit={(e) => {
                 e.preventDefault();
-                
+
                 // Create data for Google Sheets
                 const data = {
                   'Service Type': serviceType,
                   'Company Name': companyName,
+                  'Website': website, // Added website to data
                   'Email': email,
                   'Date': new Date().toISOString()
                 };
-                
+
                 // In a real implementation, you would send this data to Google Sheets
                 // This would typically involve using a fetch request to a Google Apps Script Web App
                 console.log("Form submitted with data:", data);
-                
+
                 // Simple visual feedback
                 alert("Thank you! Your quote request has been submitted. We'll be in touch soon.");
-                
+
                 // Reset form
                 setServiceType('inbound');
                 setCompanyName('');
                 setEmail('');
+                setWebsite(''); // Reset website
               }}>
                 <div className="space-y-6">
                   {/* Service Type Selection */}
                   <div>
                     <label htmlFor="service-type" className="block text-white font-medium mb-2">Type of Service</label>
-                    <select 
-                      id="service-type" 
+                    <select
+                      id="service-type"
                       value={serviceType}
                       onChange={(e) => setServiceType(e.target.value)}
                       className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -771,12 +766,12 @@ function App() {
                       <option value="both" className="bg-gray-800">Inbound + Outbound</option>
                     </select>
                   </div>
-                  
+
                   {/* Company Name */}
                   <div>
                     <label htmlFor="company-name" className="block text-white font-medium mb-2">Company Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="company-name"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
@@ -785,12 +780,25 @@ function App() {
                       placeholder="Your dealership name"
                     />
                   </div>
-                  
+
+                  {/* Website Input (Added) */}
+                  <div>
+                    <label htmlFor="website" className="block text-white font-medium mb-2">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      className="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Your website URL"
+                    />
+                  </div>
+
                   {/* Email */}
                   <div>
                     <label htmlFor="email" className="block text-white font-medium mb-2">Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -799,23 +807,23 @@ function App() {
                       placeholder="you@yourdealership.com"
                     />
                   </div>
-                  
+
                   {/* Additional Info - hidden Google Sheet embed */}
                   <div className="hidden">
-                    <iframe 
+                    <iframe
                       src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTY0fr_ST2iYdSVwDrk-YB9est-DJEtDkDz6k5ucRIoPVJGvkCACexfs5x9IU4tC17hGdH6SyendUfA/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"
-                      width="100%" 
+                      width="100%"
                       height="300">
                     </iframe>
                   </div>
-                  
+
                   {/* Submit Button */}
                   <div className="flex justify-center">
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold rounded-lg hover:from-blue-700 hover:to-indigo-800 transition-all shadow-lg"
                     >
-                      Get Quote
+                      Book A Call
                     </button>
                   </div>
                 </div>
@@ -835,10 +843,10 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 border border-white border-opacity-20">
-                   <div className="flex items-center mb-4">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover"
                     />
                     <div className="ml-3">
@@ -871,7 +879,7 @@ function App() {
 
             <div className="max-w-3xl mx-auto space-y-4">
               {faqData.map((faq, index) => (
-                <div 
+                <div
                   key={index}
                   className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl border border-white border-opacity-20 overflow-hidden"
                 >
@@ -908,10 +916,10 @@ function App() {
                 <p className="text-lg text-white text-opacity-90 mb-8">
                   Join 500+ dealerships already using AI solutions to increase lead capture, improve response times, and drive more sales.
                 </p>
-                <a 
-                  href="https://calendly.com/amin-usman-motoleads/30min" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://calendly.com/amin-usman-motoleads/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-lg shadow-lg hover:bg-opacity-90 transition-colors text-lg"
                 >
                   Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
