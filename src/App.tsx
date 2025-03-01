@@ -369,9 +369,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">24/7 AI Chatbot</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Never miss an inquiry with our always-on AI assistant that engages customers instantly.
-                      </p>
                     </div>
                   </div>
                   
@@ -381,9 +378,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Human-Like Calling Agent</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Our AI calling agent follows up with leads, answers questions, and schedules appointments.
-                      </p>
                     </div>
                   </div>
                   
@@ -393,9 +387,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Appointment Scheduling</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Automatically book test drives and appointments directly into your calendar system.
-                      </p>
                     </div>
                   </div>
                   
@@ -405,9 +396,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Instant Response</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Respond to customer inquiries within seconds, increasing engagement by 125%.
-                      </p>
                     </div>
                   </div>
                   
@@ -417,9 +405,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">CRM Integration</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Seamlessly integrates with your existing CRM to track and manage all leads.
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -457,9 +442,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Proactive Outreach</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Automatically contact leads at the optimal time to maximize engagement.
-                      </p>
                     </div>
                   </div>
                   
@@ -469,9 +451,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Natural Conversations</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        AI agents conduct human-like conversations that build rapport and trust.
-                      </p>
                     </div>
                   </div>
                   
@@ -481,9 +460,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Lead Qualification</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Identify high-value prospects and prioritize them for your sales team.
-                      </p>
                     </div>
                   </div>
                   
@@ -493,9 +469,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Follow-up Campaigns</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Automated follow-ups ensure no lead falls through the cracks.
-                      </p>
                     </div>
                   </div>
                   
@@ -505,9 +478,6 @@ function App() {
                     </div>
                     <div className="ml-3">
                       <h4 className="text-white font-semibold">Performance Analytics</h4>
-                      <p className="text-white text-opacity-80 text-sm">
-                        Detailed reporting on call outcomes, lead quality, and conversion rates.
-                      </p>
                     </div>
                   </div>
                 </div>
