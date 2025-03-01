@@ -174,12 +174,7 @@ function App() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="flex items-center">
-                  <img
-                    src="/attached_assets/Image 27-02-2025 at 2.23 AM.jpg"
-                    alt="MotoLeads Logo"
-                    className="h-8 md:h-10"
-                    style={{ objectFit: 'contain', background: 'transparent' }}
-                  />
+                  <span className="text-xl font-bold text-white">MotoLeads</span>
                 </div>
               </div>
               <div className="hidden md:block">
@@ -198,7 +193,7 @@ function App() {
                   href="https://calendly.com/amin-usman-motoleads/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center transition-colors"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors"
                 >
                   <PhoneCall className="mr-2 h-4 w-4" />
                   Request a Demo
@@ -207,22 +202,30 @@ function App() {
             </div>
             {/* Mobile Menu Button */}
             <div className="-mr-2 flex md:hidden">
-              <button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none">
+              <button 
+                onClick={() => {
+                  const mobileMenu = document.getElementById('mobile-menu');
+                  if (mobileMenu) {
+                    mobileMenu.classList.toggle('hidden');
+                  }
+                }}
+                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white hover:bg-opacity-10 focus:outline-none"
+              >
                 <Menu className="h-6 w-6" />
               </button>
-
-              {/* Mobile Navigation (added) */}
-              <div className="md:hidden bg-white bg-opacity-90 absolute top-16 right-0 w-64 z-50">
-                <a href="#services-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Services</a>
-                <a href="#roi-calculator" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">ROI Calculator</a>
-                <a href="#pricing-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pricing</a>
-                <a href="#testimonials-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
-                <a href="#faq-section" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">FAQ</a>
-              </div>
             </div>
           </div>
         </div>
       </nav>
+      
+      {/* Mobile Navigation Menu */}
+      <div id="mobile-menu" className="hidden md:hidden bg-blue-800 bg-opacity-95 absolute top-16 right-0 w-full z-50 shadow-lg border-t border-blue-700">
+        <a href="#services-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-700 transition-colors">Our Services</a>
+        <a href="#roi-calculator" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-700 transition-colors">ROI Calculator</a>
+        <a href="#pricing-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-700 transition-colors">Pricing</a>
+        <a href="#testimonials-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-700 transition-colors">Testimonials</a>
+        <a href="#faq-section" onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')} className="block px-6 py-3 text-white hover:bg-blue-700 transition-colors">FAQ</a>
+      </div>
 
       {/* Hero Section */}
       <div className="relative overflow-hidden">
@@ -506,6 +509,18 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Request Demo CTA after Services */}
+          <div className="mt-12 text-center">
+            <a
+              href="https://calendly.com/amin-usman-motoleads/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+            >
+              Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </div>
 
           {/* ROI Calculator Section - Side by side services */}
